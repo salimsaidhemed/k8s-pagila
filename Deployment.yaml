@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: pagila-webapp
+  name: pagila-webapp
+  namespace: pagila
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: pagila-webapp
+  template:
+    metadata:
+      labels:
+        app: pagila-webapp
+    spec:
+      containers:
+      - image: salimsaidhemed1989/pagila
+        name: pagila
+        resources: 
+          limits:
+            cpu: "200m"
+            memory: "128Mi"
+        ports:
+          - containerPort: 5000
